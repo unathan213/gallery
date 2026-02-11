@@ -42,6 +42,7 @@
             <button class="filter-btn" data-filter="prenup">Pre-Nuptial</button>
             <button class="filter-btn" data-filter="details">Details</button>
             <button class="filter-btn" data-filter="reception">Reception</button>
+            <button class="filter-btn" data-filter="video">Videos</button>
         </div>
     </div>
 
@@ -121,6 +122,44 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </div>
                 </div>
+
+                <!-- Video Items -->
+                <div class="gallery-item video-item tall" data-category="video" data-video-type="self" data-video-src="videos/wedding-highlight.mp4">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Wedding Highlight Reel" loading="lazy">
+                    <div class="gallery-item-overlay video-overlay">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                        <span class="video-label">Wedding Highlight Reel</span>
+                    </div>
+                </div>
+                <div class="gallery-item video-item" data-category="video" data-video-type="youtube" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80" alt="Same Day Edit" loading="lazy">
+                    <div class="gallery-item-overlay video-overlay">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                        <span class="video-label">Same Day Edit</span>
+                    </div>
+                </div>
+                <div class="gallery-item video-item" data-category="video" data-video-type="self" data-video-src="videos/prenup-bts.mp4">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80" alt="Pre-Nuptial BTS" loading="lazy">
+                    <div class="gallery-item-overlay video-overlay">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                        <span class="video-label">Pre-Nuptial BTS</span>
+                    </div>
+                </div>
+                <div class="gallery-item video-item" data-category="video" data-video-type="youtube" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&q=80" alt="Reception Moments" loading="lazy">
+                    <div class="gallery-item-overlay video-overlay">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                        <span class="video-label">Reception Moments</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -143,6 +182,12 @@
         <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
         <img src="" alt="Gallery photo" id="lightboxImg">
         <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <button class="lightbox-close" id="videoModalClose">&times;</button>
+        <div class="video-modal-content" id="videoModalContent"></div>
     </div>
 
     <!-- Footer -->

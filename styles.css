@@ -1314,6 +1314,87 @@ button { cursor: pointer; }
 }
 
 /* ============================================
+   VIDEO GALLERY
+   ============================================ */
+.video-item .video-overlay {
+  opacity: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.play-btn svg {
+  width: 24px;
+  height: 24px;
+  color: var(--white);
+  margin-left: 3px;
+}
+
+.video-item:hover .play-btn {
+  background: rgba(255,255,255,0.35);
+  border-color: var(--white);
+  transform: scale(1.1);
+}
+
+.video-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+/* Video Modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.video-modal.active {
+  display: flex;
+}
+
+.video-modal-content {
+  width: 90vw;
+  max-width: 960px;
+  aspect-ratio: 16/9;
+  background: var(--black);
+}
+
+.video-modal-content iframe,
+.video-modal-content video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ============================================
    UTILITIES
    ============================================ */
 .text-center { text-align: center; }

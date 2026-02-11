@@ -83,7 +83,7 @@ function initLightbox() {
     let visibleItems = [];
 
     function getVisibleItems() {
-        visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+        visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none' && !item.classList.contains('video-item'));
     }
 
     function openLightbox(index) {
@@ -110,10 +110,11 @@ function initLightbox() {
     }
 
     galleryItems.forEach((item, i) => {
+        if (item.classList.contains('video-item')) return;
         item.addEventListener('click', () => {
             getVisibleItems();
             const visibleIndex = visibleItems.indexOf(item);
-            openLightbox(visibleIndex);
+            if (visibleIndex >= 0) openLightbox(visibleIndex);
         });
     });
 
@@ -160,10 +161,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+/* ---- Video Modal ---- */
+function initVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const videoModalContent = document.getElementById('videoModalContent');
+    const videoModalClose = document.getElementById('videoModalClose');
+
+    if (!videoModal) return;
+
+    const videoItems = document.querySelectorAll('.video-item');
+
+    function openVideo(item) {
+        const type = item.dataset.videoType;
+        const src = item.dataset.videoSrc;
+
+        if (type === 'youtube') {
+            videoModalContent.innerHTML = `<iframe src="${src}?autoplay=1&rel=0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+        } else {
+            videoModalContent.innerHTML = `<video src="${src}" controls autoplay></video>`;
+        }
+
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+        videoModal.classList.remove('active');
+        videoModalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+
+    videoItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openVideo(item);
+        });
+    });
+
+    videoModalClose.addEventListener('click', closeVideo);
+
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) closeVideo();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideo();
+    });
+}
+
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initGalleryFilters();
     initLightbox();
+    initVideoModal();
     initContactForm();
 });
